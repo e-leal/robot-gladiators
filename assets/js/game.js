@@ -4,9 +4,16 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
+    return value;
+}
+
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-var enemyHealth = 50;
+var enemyHealth = randomNumber(40, 60);
 var enemyAttack = 12;
+
+
 
 
 var fight = function(enemyName) {
@@ -24,7 +31,7 @@ var fight = function(enemyName) {
             else {
                 window.alert(enemyName + " still has " + enemyHealth + " health left.");
             }
-            playerHealth = playerHealth - enemyAttack;
+            playerHealth = Math.max(0, playerHealth - damage);
             console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
             // check player's health
             if (playerHealth <= 0) {
@@ -134,8 +141,8 @@ var startGame = function() {
             window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
     
             var pickedEnemyName = enemyNames[i];
-    
-            enemyHealth = 50;
+            var damage = randomNumber(playerAttack -3, playerAttack);
+            enemyHealth = Mat.max(0, enemyHealth - damage);
     
             fight(pickedEnemyName);
             // if we're not at the last enemy in the array
