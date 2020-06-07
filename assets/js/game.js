@@ -99,8 +99,9 @@ var fight = function(enemy) {
         isPlayerTurn = false;
     }
     while(enemy.health  > 0 && playerInfo.health > 0){
+        console.log("hey is it player's turn: " + isPlayerTurn);
         if(isPlayerTurn){
-            fightOrSkip();
+            //fightOrSkip();
         
             if(fightOrSkip()){
                 break;
